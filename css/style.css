@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Lato-Light";
+    src: url(../assets/fonts/Lato-Light.ttf);
+}
+
+/* Estilos generales */
+body {
+    background: url(../assets/img/background/wall_op.jpg);
+}
+
+
+#contenedor-general {
+    background-color: rgb(144, 172, 143);
+    border: 2 solid black;
+    padding: 10px;
+    margin: 2%;
+}
+
+.productCard {
+    background-color: rgb(212, 170, 170);
+    border: 2px solid #2B3035;
+    margin: 10px;
+    padding: 25px;
+}
+
+.store1 {
+    /* background-color: #2B3035; */
+    /* width: 75rem; */
+    border-radius: 2%;
+    border: 2px solid #2B3035;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: center;
+
+}
+
+.store2 {
+    background-color: rgb(135, 142, 104);
+    /* width: 25rem; */
+    height: 50rem;
+    border: 2px solid #2B3035;
+    /* position: fixed; */
+}
