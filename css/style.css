@@ -1,44 +1,123 @@
+@charset "UTF-8";
+
+* {
+    --rosa-basic-color: #ecd0f0;
+    --celeste-basic-color: #00b1eb;
+    --dark-basic-color: #2B3035;
+    --white-basic-color: #fffcfc;
+    --rosa-regular-color: #f1b0fa78;
+    box-sizing: border-box;
+    margin: 1px;
+    padding: 0;
+    color: var(--dark-basic-color);
+    justify-content: center;
+}
+
 @font-face {
-    font-family: "Lato-Light";
-    src: url(../assets/fonts/Lato-Light.ttf);
+    font-family: "Gluten-Light";
+    src: url(../assets/fonts/Gluten-Light.ttf);
 }
 
-/* Estilos generales */
+/* ******************************************* */
+/* *Estilos generales */
+/* ******************************************* */
 body {
-    background: url(../assets/img/background/wall_op.jpg);
+    background: url(../assets/img/background/wall_op05_2.jpg);
+
 }
 
+.container__tittle-index {
+    background-color: var(--celeste-basic-color);
+    margin-top: 5px;
+}
 
+.container-text {
+    width: 100%;
+    border-radius: 10px;
+    border: 3px solid var(--dark-basic-color);
+    margin-bottom: 5px;
+    padding: 0 10px;
+}
+
+/* .logo:after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+} */
+
+/* ******************************************* */
+/* ******************************************* */
 #contenedor-general {
-    background-color: rgb(144, 172, 143);
+    background-color: var(--rosa-basic-color);
     border: 2 solid black;
     padding: 10px;
     margin: 2%;
 }
 
 .productCard {
-    background-color: rgb(212, 170, 170);
-    border: 2px solid #2B3035;
+    background-color: rgba(212, 170, 170, 0.383);
+    border: 2px dotted #2B3035;
+    border-radius: 5%;
     margin: 10px;
-    padding: 25px;
+    padding: 10px;
+}
+
+.imgProduct {
+    border-radius: 20%;
 }
 
 .store1 {
-    /* background-color: #2B3035; */
-    /* width: 75rem; */
-    border-radius: 2%;
-    border: 2px solid #2B3035;
     display: flex;
     flex-wrap: wrap;
     margin: 20px;
     justify-content: center;
-
 }
 
 .store2 {
-    background-color: rgb(135, 142, 104);
-    /* width: 25rem; */
-    height: 50rem;
-    border: 2px solid #2B3035;
-    /* position: fixed; */
+    background-color: var(--rosa-regular-color);
+    height: 100%;
+    /* width: 35%; */
+    border: 2px solid var(--dark-basic-color);
+    padding-bottom: 5px;
+}
+
+.card {
+    background-color: var(--dark-basic-color);
+    color: var(--white-basic-color);
+
+    .card-title,
+    .card-text {
+        color: var(--white-basic-color);
+    }
+}
+
+.myButtonDeleteClass {
+    align-items: center;
+}
+
+/* ******************************************* */
+/* Estilos del footer */
+/* ******************************************* */
+.footer-style {
+    padding-top: 20px;
+    background-color: var(--dark-basic-color);
+}
+
+footer h4,
+footer h5 {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--white-basic-color);
+}
+
+
+button {
+    padding: 5px;
+    background-color: var(--dark-basic-color);
+    color: var(--white-basic-color);
+    font-weight: 400;
+    margin-left: 5px;
 }

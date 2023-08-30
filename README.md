@@ -1,30 +1,39 @@
 # PreEntrega2-AldanaEndo
+
 Repositorio para la entrega de trabajos del curso de JavaScript
 
-# Proceso 
-* Agregar a arreglo data de una lista para poder consultarla
-* Almacenar esta información para los filtros y cálculos
-* Inicio de la interacción con el usuario
-* Solicitar usuario para identificar al comprador
-* Agregar al carrito de compras los productos filtrado
-* Sumar los costos
-* Valida el monto para agregar un descuento
-* Mostrar el total 
-* Cierre de interacción
+# Concepto
 
-# Validación de usuario
-* Solo se pide que el usuario ingrese un username
+Tienda de ropa casual
+Se ofrecen productos exclusivos
 
-# Listado de productos
-* producto: "1", nombre: "Remera", tipo/marca: "Ropa - Tranca", costo: 200,
-* producto: "2", nombre: "Casaca", tipo/marca: "Ropa - Tranca", costo: 100,
-* producto: "3", nombre: "Pantalón", tipo/marca: "Ropa - Tranca", costo: 150,
-* producto: "4", nombre: "Short", tipo/marca: "Ropa - Tranca", costo: 250,
-* producto: "5", nombre: "Gorro", tipo/marca: "Accesorios - Act4u", costo: 45,
-* producto: "6", nombre: "Lentes de sol", tipo/marca: "Accesorios - Act4u", costo:90,
-* producto: "7", nombre: "Mochila", tipo/marca: "Accesorios - Act4u", costo: 120,
-* producto: "8", nombre: "Audífonos", tipo/marca: "Tecnología - Now", costo: 50,
-* producto: "9", nombre: "Parlante", tipo/marca: "Tecnología - Now", costo: 100,
+# Proceso
 
-# Descuento
-* De acuerdo al monto, si el total alcanza o supera los $500, se le aplica un 25% de descuento 
+1. El usuario ingresa a la página y selecciona los productos que desea comprar.
+2. Para agregarlos, hace clic en el botón "Agregar al carrito" que se muestra al lado de cada producto.
+3. Al lado derecho o superior (dependiendo del tamaño de la pantalla) se agregarán los productos seleccionados.
+4. En la parte superior del carrito se mostrará el total.
+5. Al finalizar la selección, se podrá hacer clic en el botón "Pagar"
+6. Se procede a pagar y finaliza la experiencia de usuario.
+
+# Recursos adicionales
+
+- bootstrap
+  ** Link: https://getbootstrap.com/docs/5.1/getting-started/introduction/
+  ** Version: v5.1
+  \*\* Uso: estilado de componentes
+
+- uuid
+  ** Link: https://www.npmjs.com/package/uuid?activeTab=readme
+  ** Version: v9.0.0
+  \*\* Uso: agregar un identificador a los productos del carrito y así, cuando si se eliminan productos iguales, no eliminar los productos con las mismas propiedades y valores.
+
+# Desarrollo
+
+- Se muestra la página de la tienda con 9 productos que se ingresan a través de la creación de un arreglo (cart []), que se llenará con la información de una constante llamada productos con el método forEach.
+- Se agrega el elemto botón por medio de un elemento identificado con la clase .btnAddProduct y se le asigna la posibilidad de poder filtrar, con un clic llamado con un addEventListener y de identificar los productos, así sean la misma prenda, con un identicador agregado con la librería "uuid", de este modo, si se elimina un producto X y existiese más productos iguales, el total siga considerando los productos que quedan realmente en el carrito.
+- Con appendCart se agrega internamente al contenedor del carrito y se le asigna una tarjeta agregada con bootstrap.
+- Se crea un elemento button por cada producto agregado al carrito, de este modo, se podrán eliminar los productos. Estos elementos mantienen la identificación con uuid.
+- Se calcula el total, considerando las posibles eliminaciones de los productos.
+- Muestra el total.
+- Se agrega un botón para finalizar la compra y mostrar un mensaje de compra exitosa.
