@@ -1,4 +1,4 @@
-# PreEntrega2-AldanaEndo
+# PreEntrega3-AldanaEndo
 
 Repositorio para la entrega de trabajos del curso de JavaScript
 
