@@ -14,7 +14,7 @@ if (storedCart) {
 
 // Arreglo de objetos con las características de los productos
 const productos = [
-    { productId: "1", productName: "Remera", productImage:"../assets/img/products/id1.jpg", productColor: "Ropa - Tranca", productCost: 13500},
+    { productId: "1", productName: "Remera", productImage:"../assets/img/products/id1.jpg", productColor: "negro", productCost: 13500},
     { productId: "2", productName: "Campera", productImage:"../assets/img/products/id2.jpg" ,productColor: "negro", productCost: 65000},
     { productId: "3", productName: "Short", productImage:"../assets/img/products/id3.jpg" ,productColor: "negro", productCost: 20000},
     { productId: "4", productName: "Gorro", productImage:"../assets/img/products/id4.jpg" ,productColor: "negro", productCost: 7500},
