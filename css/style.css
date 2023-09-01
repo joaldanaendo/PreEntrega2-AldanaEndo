@@ -1,11 +1,15 @@
 @charset "UTF-8";
 
+/* ******************************************* */
+/* *Estilos generales */
+/* ******************************************* */
 * {
     --rosa-basic-color: #ecd0f0;
     --celeste-basic-color: #00b1eb;
     --dark-basic-color: #2B3035;
     --white-basic-color: #fffcfc;
     --rosa-regular-color: #f1b0fa78;
+    --rosa-transparente-color: #ecd0f0ce;
     box-sizing: border-box;
     margin: 1px;
     padding: 0;
@@ -18,17 +22,28 @@
     src: url(../assets/fonts/Gluten-Light.ttf);
 }
 
-/* ******************************************* */
-/* *Estilos generales */
-/* ******************************************* */
 body {
     background: url(../assets/img/background/wall_op05_2.jpg);
 
 }
 
+/* ******************************************* */
+/* *Estilos del elementos del body */
+/* ******************************************* */
 .container__tittle-index {
     background-color: var(--celeste-basic-color);
     margin-top: 5px;
+}
+
+.container__usuario {
+    background-color: var(--rosa-basic-color);
+    margin-top: 5px;
+}
+
+#userInfo {
+    display: flex;
+    font-size: large;
+    font-weight: bold;
 }
 
 .container-text {
@@ -39,19 +54,8 @@ body {
     padding: 0 10px;
 }
 
-/* .logo:after {
-    content: '';
-    display: block;
-    position: absolute;
-    inset: 0;
-    background-size: 100%;
-    background-repeat: no-repeat;
-} */
-
-/* ******************************************* */
-/* ******************************************* */
 #contenedor-general {
-    background-color: var(--rosa-basic-color);
+    background-color: var(--rosa-transparente-color);
     border: 2 solid black;
     padding: 10px;
     margin: 2%;
@@ -96,6 +100,14 @@ body {
 
 .myButtonDeleteClass {
     align-items: center;
+}
+
+#btnFinalizar {
+    margin-bottom: 5px;
+}
+
+.swal2-image {
+    border-radius: 50%;
 }
 
 /* ******************************************* */

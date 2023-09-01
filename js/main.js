@@ -1,116 +1,203 @@
-// Se declara una variable que va a contener un arreglo con los objetos que se traeran desde la data
-const productList = [];
+// Información referente a los productos
 
-// Creación de clase constructora para la estructura de los objetos del arreglo "productList"
-class Products {
-    constructor(productId, productName, productType, productCost) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productType = productType;
-        this.productCost = productCost;
-    }
+// Contenedor de productos
+let contenedor = document.getElementById("contenedor-productos");
 
-    // Método que agrega a "productList" /
-    addProduct() {
-        productList.push({
-            productId: `${this.productId}`,
-            productName: `${this.productName}`,
-            productType: `${this.productType}`,
-            productCost: `${this.productCost}`,
-        })
-    }
+// Declaración de arreglo para recibir productos en el carrito
+let cart = [];
+
+// Recupera los datos del carrito desde localStorage cuando la página se carga
+let storedCart = localStorage.getItem("carrito");
+if (storedCart) {
+  cart = JSON.parse(storedCart);
 }
 
-// Arreglo que contendrá la información de la data
-const data = [
-    { productId: "1", productName: "Remera", productType: "Ropa - Tranca", productCost: 200 },
-    { productId: "2", productName: "Casaca", productType: "Ropa - Tranca", productCost: 100 },
-    { productId: "3", productName: "Pantalón", productType: "Ropa - Tranca", productCost: 150 },
-    { productId: "4", productName: "Short", productType: "Ropa - Tranca", productCost: 250 },
-    { productId: "5", productName: "Gorro", productType: "Accesorios - Act4u", productCost: 45 },
-    { productId: "6", productName: "Lentes de sol", productType: "Accesorios - Act4u", productCost: 90 },
-    { productId: "7", productName: "Mochila", productType: "Accesorios - Act4u", productCost: 120 },
-    { productId: "8", productName: "Audífonos", productType: "Tecnología - Now", productCost: 50 },
-    { productId: "9", productName: "Parlante", productType: "Tecnología - Now", productCost: 100 },
+// Arreglo de objetos con las características de los productos
+const productos = [
+    { productId: "1", productName: "Remera", productImage:"../assets/img/products/id1.jpg", productColor: "Ropa - Tranca", productCost: 13500},
+    { productId: "2", productName: "Campera", productImage:"../assets/img/products/id2.jpg" ,productColor: "negro", productCost: 65000},
+    { productId: "3", productName: "Short", productImage:"../assets/img/products/id3.jpg" ,productColor: "negro", productCost: 20000},
+    { productId: "4", productName: "Gorro", productImage:"../assets/img/products/id4.jpg" ,productColor: "negro", productCost: 7500},
+    { productId: "5", productName: "Pantalón", productImage:"../assets/img/products/id5.jpg" ,productColor: "blanco", productCost: 45000},
+    { productId: "6", productName: "Lentes ", productImage:"../assets/img/products/id6.jpg" ,productColor: "negro", productCost: 10000},
+    { productId: "7", productName: "Buzo", productImage:"../assets/img/products/id7.jpg" ,productColor: "perla", productCost: 33000},
+    { productId: "8", productName: "Jean", productImage:"../assets/img/products/id8.jpg" ,productColor: "azul", productCost: 85000},
+    { productId: "9", productName: "Campera", productImage:"../assets/img/products/id9.jpg" ,productColor: "beige", productCost: 65000},
 ];
 
-// Método que recorrerá la data y llama al método ".addProduct()" para agregarlos a "productList"
-data.forEach((ele) => {
-    const register = new Products(ele.productId, ele.productName, ele.productType, ele.productCost);
-    register.addProduct();
+// Método para agregar la información a un div del HTML
+productos.forEach((item) => {
+  let productCard = document.createElement("div");
+  productCard.className = "productCard";
+  productCard.innerHTML = `
+    <h2>${item.productName}</h2>
+    <img src= ${item.productImage} class= imgProduct alt= ${item.productName} style="width: auto; height:15rem">
+    <h5>Color: ${item.productColor}</h5>
+    <b>$${item.productCost}</b>
+    <button type="button" class = "btnAddProduct" value = ${item.productId} >Agregar al carrito</button>
+  `;
+  contenedor.append(productCard);
+});
 
-})
+// Función que se le asigna al botón "addProduct"
+let botonAddProduct = document.getElementsByClassName("btnAddProduct");
+for (let i = 0; i < botonAddProduct.length; i++) {
+botonAddProduct[i].addEventListener("click", (e) => {
+let productIdintoCart = productos.filter(ele => ele.productId == e.target.value);
+let identifierId = uuid.v1();
+cart.push({...productIdintoCart[0], identifier:identifierId});
+appendCart({...productIdintoCart[0], identifier:identifierId});
+pagoTotal(productIdintoCart[0].productCost);
 
-// Declaración de una constante que almacerá los resultados de la búsqueda para luego sumar los costos (productCost)
-const cart = [];
+// Actualización localStorage
+localStorage.setItem("carrito", JSON.stringify(cart));
+})}
 
-// Inicio de interacción entre el usuario y la web
-let username = prompt("Ingrese su usuario");
+// Declaración e inicialización de variable que brindará el total
+let total=0;
 
-//  Validación de ingreso de usuario
-while (username == "") {
-    username = prompt("Verifique su usuario");
+// Función para agregar items al carrito
+const appendCart = (item) => {
+// Contenedor de carrito
+let contenedorCart = document.getElementById("contenedor-carrito");
+  let productIdintoCartMini = document.createElement("div");
+  productIdintoCartMini.className = "productIdintoCartMini";
+  productIdintoCartMini.id = item.identifier;
+  productIdintoCartMini.innerHTML = `
+  <div class="card " style="max-width: 100%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src=${item.productImage} class="img-fluid rounded-start imgProduct" alt=${item.productName} >
+    </div>
+    <div class="col-md-7">
+      <div class="card-body">
+        <h5 class="card-title">${item.productName}</h5>
+        <p class="card-text">$${item.productCost}.00</p>
+        <div id=${item.identifier}></div>
+      </div>
+    </div>
+  </div>
+</div>
+`
+// Contenedor visual
+  contenedorCart.append(productIdintoCartMini);
+  let button = document.createElement("button");
+  button.id = "myButtonDelete";
+  button.className = "myButtonDeleteClass";
+  button.textContent = "Borrar";
+  button.addEventListener("click", () => {
+    let deleteItem = cart.filter(ele => ele.identifier !== item.identifier);
+  cart = deleteItem;
+
+// Actualiza localStorage
+localStorage.setItem("carrito", JSON.stringify(cart));
+
+  let getProduct = document.getElementById(item.identifier);
+  getProduct.remove();
+  pagoTotal(item.productCost*-1);
+  })
+  let contenedorButtonDelete = document.getElementById(`${item.identifier}`);
+  contenedorButtonDelete.appendChild(button);
 }
 
-// Solicitud de código de producto
-let id = prompt(`
-Ingrese el código del producto (1-9) que agregará al carrito
+// Llamado a función que oculatará el botón hasta que se agreguen productos
+hideBtnFinalizar();
 
-Para terminar, escriba 0
-`
-);
+// Función para cálculo total
+function pagoTotal(precio){
+    total = total + precio;
+    let totalContent = document.getElementById("total");
+    totalContent.textContent = total;
 
-// Validación de código de producto
-while (id != 0) {
-    // Declarar la variable que filtrará la data para encontrar coincidencias con el id del producto
-    let filterProduct = productList.filter(ele => ele.productId === id);
-
-    // Validación de ingreso de id diferente de vacío
-    if (filterProduct.length > 0) {
-        // Método para agregar los producto filtrados a la constante "cart"
-        cart.push(filterProduct[0]);
-
-        // Información a mostrar
-        let info =
-            `
-    Información del producto consultado:
-
-    Código: ${filterProduct[0].productId}
-    Producto: ${filterProduct[0].productName}
-    Categoría: ${filterProduct[0].productType}
-    Costo: $${filterProduct[0].productCost}
-    
-    ¡Suerte!
-    `;
-        alert(info);
+    // Condición para mostrar el botón finalizar solo si hay productos en el carrito
+    if(cart.length > 0){
+      showBtnFinalizar();
     } else {
-        alert(`El producto en consulta no se encuentra en la lista de productos`);
+      hideBtnFinalizar();
     }
+  }
+  
+// Método para indicar qué mostrar con el botón "Finalizar compra"
+  let btnFinalizar = document.getElementById("btnFinalizar");
+  btnFinalizar.addEventListener("click", () => {
+    Swal.fire({
+      title: 'Gracias por comprar Tranca',
+      text: `Tu cuenta es de $${total}`,
+      imageUrl: '../assets/img/tranca/tranca_final.jpg',
+      imageWidth: 300,
+      imageHeight: 300,
+      imageAlt: 'Tranca perrita',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Finalizar',
+      denyButtonText: `Regresar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      } else if (result.isDenied) {
+      // Se deja sin acciones para que regrese a la ventana para continuar con la compra
+      }
+    })
+// Eliminación de localStorage al finalizar la compra
+    localStorage.clear();
+  });
 
-    id = prompt(`
-Ingrese el código del producto (1-9) que agregará al carrito
-
-Para terminar, escriba 0
-`
-    );
+// Validación para carga de localStorage de usuario o solicitar el ingreso
+let usuario = localStorage.getItem("usuario");
+if (usuario) {
+  mostrarUsuario(usuario);
 }
 
-// Declaración de la variable que almacenará el costo de los productos
-let total = 0;
+// Función para solicitar el inicio de la sesión
+function mostrarUsuario(usuario) {
+  let userInfo = document.getElementById("userInfo");
+  userInfo.textContent = `¡Qué gusto verte nuevamente, ${usuario}!`;
 
-// Método que recorrerá los productos agregados a "cart" y acumulará el "total"
-cart.forEach((ele) => {
-    total = total + Number(ele.productCost);
-})
+  // Condición para mostrar el botón login o no en función a la existencia de usuario en el localStorage
+  if (localStorage.getItem("usuario") !== null){
+    hideBtnLogin();
+  }else {
+    showBtnLogin();
+  }}
 
-// Condición para aplicar un descuento a través de una operación aritmética
-if (total >= 500) {
-    alert(`¡Felicitaciones! Ahora solo paga $${total * 0.75} con el descuento de 25%`);
+// Botón de inicio de sesión
+let btnLogin = document.getElementById("btnLogin");
+btnLogin.addEventListener("click", () => {
+  Swal.fire({
+    title: 'Inicie sesión',
+    input: 'text',
+    inputPlaceholder: 'Ingrese su usuario',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Iniciar Sesión',
+    cancelButtonText: 'Continuar sin sesión',
+    preConfirm: (usuario) => {
+      if (usuario) {
+        // Guarda el nombre de usuario en el localStorage del usuario
+        localStorage.setItem("usuario", usuario);
+        mostrarUsuario(usuario);
 
-} else {
-    alert(`¡Gracias! El costo total es de $${total}`);
+// Valida la aparación del botón en función al localStorage
+        btnLogin.style.display = 'none';
+      }
+    }
+  });
+});
+
+// Funciones para mostrar u ocultar el botón "Finalizar compra"
+function hideBtnFinalizar(){
+  document.getElementById("btnFinalizar").style.display = `none`;
+}
+function showBtnFinalizar(){
+  document.getElementById("btnFinalizar").style.display = "block";
 }
 
-// Mensaje de cierre de interacción
-alert(`Gracias, ${username} ¡Vuelve pronto (=*.*=) !`);
-
+// Funciones para mostrar u ocultar el botón "Login/Iniciar Sesión"
+function hideBtnLogin(){
+  document.getElementById("btnLogin").style.display = `none`;
+}
+function showBtnLogin(){
+  document.getElementById("btnLogin").style.display = "block";
+}
