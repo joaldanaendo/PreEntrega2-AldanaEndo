@@ -4,8 +4,7 @@ Repositorio para la entrega de trabajos del curso de JavaScript
 
 # Concepto
 
-Tienda de ropa casual
-Se ofrecen productos exclusivos
+- Tienda de ropa casual donde se ofrecen productos exclusivos.
 
 # Proceso
 
@@ -16,6 +15,8 @@ Se ofrecen productos exclusivos
 5. En la parte superior del carrito se mostrará el total.
 6. Al finalizar la selección, se podrá hacer clic en el botón "Finalizar compra"
 7. Se procede a pagar y finaliza la experiencia de usuario.
+
+- El localStorage del usuario se almacena para mostrar y no volver a solicitar el ususario.
 
 # Recursos adicionales
 
@@ -36,7 +37,7 @@ Se ofrecen productos exclusivos
 
 # Desarrollo
 
-- En la web, el usuario puede iniciar sesión para identicarse.
+- En la web, el usuario puede iniciar sesión para identificarse.
 - Esta sesión se guardará en el localStorage, cerrando la sesión solo al finalizar la compra.
 - Se muestra la página de la tienda con 9 productos que se ingresan a través de la creación de un arreglo (cart []), que se llenará con la información de una constante llamada productos con el método forEach.
 - Se agrega el elemto botón por medio de un elemento identificado con la clase .btnAddProduct y se le asigna la posibilidad de poder filtrar, con un clic llamado con un addEventListener y de identificar los productos, así sean la misma prenda, con un identicador agregado con la librería "uuid", de este modo, si se elimina un producto X y existiese más productos iguales, el total siga considerando los productos que quedan realmente en el carrito.
