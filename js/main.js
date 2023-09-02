@@ -24,7 +24,7 @@ const productos = [
     { productId: "8", productName: "Jean", productImage:"./assets/img/products/id8.jpg" ,productColor: "azul", productCost: 85000},
     { productId: "9", productName: "Campera", productImage:"./assets/img/products/id9.jpg" ,productColor: "beige", productCost: 65000},
     { productId: "10", productName: "Pantuflas", productImage:"./assets/img/products/id10.jpg" ,productColor: "celeste", productCost: 25000},
-    { productId: "11", productName: "Gorro", productImage:"../assets/img/products/id11.jpg" ,productColor: "beige", productCost: 7500},
+    { productId: "11", productName: "Gorro", productImage:"./assets/img/products/id11.jpg" ,productColor: "beige", productCost: 7500},
     { productId: "12", productName: "Bolsa", productImage:"./assets/img/products/id12.jpg" ,productColor: "beige", productCost: 2500},
 ];
 
