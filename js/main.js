@@ -14,18 +14,18 @@ if (storedCart) {
 
 // Arreglo de objetos con las características de los productos
 const productos = [
-    { productId: "1", productName: "Remera", productImage:"../assets/img/products/id1.jpg", productColor: "negro", productCost: 13500},
-    { productId: "2", productName: "Campera", productImage:"../assets/img/products/id2.jpg" ,productColor: "negro", productCost: 65000},
-    { productId: "3", productName: "Short", productImage:"../assets/img/products/id3.jpg" ,productColor: "negro", productCost: 20000},
-    { productId: "4", productName: "Gorro", productImage:"../assets/img/products/id4.jpg" ,productColor: "negro", productCost: 7500},
-    { productId: "5", productName: "Pantalón", productImage:"../assets/img/products/id5.jpg" ,productColor: "blanco", productCost: 45000},
-    { productId: "6", productName: "Lentes ", productImage:"../assets/img/products/id6.jpg" ,productColor: "negro", productCost: 10000},
-    { productId: "7", productName: "Buzo", productImage:"../assets/img/products/id7.jpg" ,productColor: "perla", productCost: 33000},
-    { productId: "8", productName: "Jean", productImage:"../assets/img/products/id8.jpg" ,productColor: "azul", productCost: 85000},
-    { productId: "9", productName: "Campera", productImage:"../assets/img/products/id9.jpg" ,productColor: "beige", productCost: 65000},
-    { productId: "10", productName: "Pantuflas", productImage:"../assets/img/products/id10.jpg" ,productColor: "celeste", productCost: 25000},
+    { productId: "1", productName: "Remera", productImage:"./assets/img/products/id1.jpg", productColor: "negro", productCost: 13500},
+    { productId: "2", productName: "Campera", productImage:"./assets/img/products/id2.jpg" ,productColor: "negro", productCost: 65000},
+    { productId: "3", productName: "Short", productImage:"./assets/img/products/id3.jpg" ,productColor: "negro", productCost: 20000},
+    { productId: "4", productName: "Gorro", productImage:"./assets/img/products/id4.jpg" ,productColor: "negro", productCost: 7500},
+    { productId: "5", productName: "Pantalón", productImage:"./assets/img/products/id5.jpg" ,productColor: "blanco", productCost: 45000},
+    { productId: "6", productName: "Lentes ", productImage:"./assets/img/products/id6.jpg" ,productColor: "negro", productCost: 10000},
+    { productId: "7", productName: "Buzo", productImage:"./assets/img/products/id7.jpg" ,productColor: "perla", productCost: 33000},
+    { productId: "8", productName: "Jean", productImage:"./assets/img/products/id8.jpg" ,productColor: "azul", productCost: 85000},
+    { productId: "9", productName: "Campera", productImage:"./assets/img/products/id9.jpg" ,productColor: "beige", productCost: 65000},
+    { productId: "10", productName: "Pantuflas", productImage:"./assets/img/products/id10.jpg" ,productColor: "celeste", productCost: 25000},
     { productId: "11", productName: "Gorro", productImage:"../assets/img/products/id11.jpg" ,productColor: "beige", productCost: 7500},
-    { productId: "12", productName: "Bolsa", productImage:"../assets/img/products/id12.jpg" ,productColor: "beige", productCost: 2500},
+    { productId: "12", productName: "Bolsa", productImage:"./assets/img/products/id12.jpg" ,productColor: "beige", productCost: 2500},
 ];
 
 // Método para agregar la información a un div del HTML
@@ -134,7 +134,7 @@ function pagoTotal(precio){
     Swal.fire({
       title: 'Gracias por comprar Tranca',
       text: `N° orden: ${Math.floor(Math.random() * 5000)} - Tu cuenta es de $${total}`,
-      imageUrl: '../assets/img/tranca/tranca_final.jpg',
+      imageUrl: './assets/img/tranca/tranca_final.jpg',
       imageWidth: 300,
       imageHeight: 300,
       imageAlt: 'Tranca perrita',
