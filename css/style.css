@@ -24,7 +24,6 @@
 
 body {
     background: url(../assets/img/background/wall_op05_2.jpg);
-
 }
 
 /* ******************************************* */
@@ -71,6 +70,10 @@ body {
 
 .imgProduct {
     border-radius: 20%;
+}
+
+.swal2-html-container {
+    color: var(--white-basic-color) !important;
 }
 
 .store1 {

@@ -23,6 +23,9 @@ const productos = [
     { productId: "7", productName: "Buzo", productImage:"../assets/img/products/id7.jpg" ,productColor: "perla", productCost: 33000},
     { productId: "8", productName: "Jean", productImage:"../assets/img/products/id8.jpg" ,productColor: "azul", productCost: 85000},
     { productId: "9", productName: "Campera", productImage:"../assets/img/products/id9.jpg" ,productColor: "beige", productCost: 65000},
+    { productId: "10", productName: "Pantuflas", productImage:"../assets/img/products/id10.jpg" ,productColor: "celeste", productCost: 25000},
+    { productId: "11", productName: "Gorro", productImage:"../assets/img/products/id11.jpg" ,productColor: "beige", productCost: 7500},
+    { productId: "12", productName: "Bolsa", productImage:"../assets/img/products/id12.jpg" ,productColor: "beige", productCost: 2500},
 ];
 
 // Método para agregar la información a un div del HTML
@@ -59,7 +62,7 @@ let total=0;
 // Función para agregar items al carrito
 const appendCart = (item) => {
 // Contenedor de carrito
-let contenedorCart = document.getElementById("contenedor-carrito");
+  let contenedorCart = document.getElementById("contenedor-carrito");
   let productIdintoCartMini = document.createElement("div");
   productIdintoCartMini.className = "productIdintoCartMini";
   productIdintoCartMini.id = item.identifier;
@@ -100,15 +103,23 @@ localStorage.setItem("carrito", JSON.stringify(cart));
   contenedorButtonDelete.appendChild(button);
 }
 
+window.addEventListener("load", () => {
+  if(cart.length > 0){
+    cart.forEach((item) => {
+    appendCart(item);
+    pagoTotal(item.productCost);
+    })}
+})
+
 // Llamado a función que oculatará el botón hasta que se agreguen productos
 hideBtnFinalizar();
 
 // Función para cálculo total
 function pagoTotal(precio){
+   
     total = total + precio;
     let totalContent = document.getElementById("total");
-    totalContent.textContent = total;
-
+    totalContent.textContent = `Cantidad: ${cart.length} - Total a pagar: $${total}`;
     // Condición para mostrar el botón finalizar solo si hay productos en el carrito
     if(cart.length > 0){
       showBtnFinalizar();
@@ -122,7 +133,7 @@ function pagoTotal(precio){
   btnFinalizar.addEventListener("click", () => {
     Swal.fire({
       title: 'Gracias por comprar Tranca',
-      text: `Tu cuenta es de $${total}`,
+      text: `N° orden: ${Math.floor(Math.random() * 5000)} - Tu cuenta es de $${total}`,
       imageUrl: '../assets/img/tranca/tranca_final.jpg',
       imageWidth: 300,
       imageHeight: 300,
@@ -190,6 +201,7 @@ btnLogin.addEventListener("click", () => {
 function hideBtnFinalizar(){
   document.getElementById("btnFinalizar").style.display = `none`;
 }
+
 function showBtnFinalizar(){
   document.getElementById("btnFinalizar").style.display = "block";
 }
@@ -198,6 +210,7 @@ function showBtnFinalizar(){
 function hideBtnLogin(){
   document.getElementById("btnLogin").style.display = `none`;
 }
+
 function showBtnLogin(){
   document.getElementById("btnLogin").style.display = "block";
 }

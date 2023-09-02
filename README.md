@@ -17,6 +17,7 @@ Repositorio para la entrega de trabajos del curso de JavaScript
 7. Se procede a pagar y finaliza la experiencia de usuario.
 
 - El localStorage del usuario se almacena para mostrar y no volver a solicitar el ususario.
+- El localStorage del carrito permite mostrar los productos pese a actualizar la web.
 
 # Recursos adicionales
 
