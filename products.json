@@ -1,0 +1,88 @@
+[
+    { 
+        "productoId": "1", 
+        "productoNombre": "Remera", 
+        "productoImagen":"./assets/img/products/id1.jpg", 
+        "productoColor": "negro", 
+        "productoCosto": 13500
+    },
+
+    { 
+        "productoId": "2", 
+        "productoNombre": "Campera",
+        "productoImagen":"./assets/img/products/id2.jpg", 
+        "productoColor": "negro",
+        "productoCosto": 65000
+    },
+    { 
+        "productoId": "3", 
+        "productoNombre": "Short", 
+        "productoImagen":"./assets/img/products/id3.jpg",
+        "productoColor": "negro",
+        "productoCosto": 20000
+    },
+    { 
+        "productoId": "4", 
+        "productoNombre": "Gorro",
+        "productoImagen":"./assets/img/products/id4.jpg",
+        "productoColor": "negro",
+        "productoCosto": 7500
+    },
+    { 
+        "productoId": "5", 
+        "productoNombre": "Pantalón", 
+        "productoImagen":"./assets/img/products/id5.jpg",
+        "productoColor": "blanco", 
+        "productoCosto": 45000
+    },
+    { 
+        "productoId": "6", 
+        "productoNombre": "Lentes ",
+        "productoImagen":"./assets/img/products/id6.jpg",
+        "productoColor": "negro",
+        "productoCosto": 10000
+    },
+    { 
+        "productoId": "7", 
+        "productoNombre": "Buzo",
+        "productoImagen":"./assets/img/products/id7.jpg", 
+        "productoColor": "perla",
+        "productoCosto": 33000
+    },
+    { 
+        "productoId": "8", 
+        "productoNombre": "Jean",
+        "productoImagen":"./assets/img/products/id8.jpg",
+        "productoColor": "azul", 
+        "productoCosto": 85000
+    },
+    { 
+        "productoId": "9", 
+        "productoNombre": "Campera",
+        "productoImagen":"./assets/img/products/id9.jpg",
+        "productoColor": "beige",
+        "productoCosto": 65000
+    },
+    { 
+        "productoId": "10",
+        "productoNombre": "Pantuflas", 
+        "productoImagen":"./assets/img/products/id10.jpg",
+        "productoColor": "celeste", 
+        "productoCosto":25000
+    },
+    { 
+        "productoId": "11",
+        "productoNombre": "Gorro", 
+        "productoImagen":"./assets/img/products/id11.jpg",
+        "productoColor": "beige",
+        "productoCosto": 7500
+    },
+    { 
+        "productoId": "12",
+        "productoNombre": "Bolsa", 
+        "productoImagen":"./assets/img/products/id12.jpg",
+        "productoColor": "beige",
+        "productoCosto": 2500
+    }
+
+]

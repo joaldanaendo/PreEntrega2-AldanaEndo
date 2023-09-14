@@ -39,7 +39,7 @@ body {
     margin-top: 5px;
 }
 
-#userInfo {
+#infoUsuario {
     display: flex;
     font-size: large;
     font-weight: bold;
@@ -60,7 +60,7 @@ body {
     margin: 2%;
 }
 
-.productCard {
+.productoDeCarrito {
     background-color: rgba(212, 170, 170, 0.383);
     border: 2px dotted #2B3035;
     border-radius: 5%;

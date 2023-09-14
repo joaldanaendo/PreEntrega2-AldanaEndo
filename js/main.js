@@ -4,56 +4,56 @@
 let contenedor = document.getElementById("contenedor-productos");
 
 // Declaración de arreglo para recibir productos en el carrito
-let cart = [];
+let carritoReceptor = [];
 
 // Recupera los datos del carrito desde localStorage cuando la página se carga
-let storedCart = localStorage.getItem("carrito");
-if (storedCart) {
-  cart = JSON.parse(storedCart);
+let carritoAlmacenado = localStorage.getItem("carrito");
+if (carritoAlmacenado) {
+  carritoReceptor = JSON.parse(carritoAlmacenado);
 }
 
 // Arreglo de objetos con las características de los productos
 const productos = [
-    { productId: "1", productName: "Remera", productImage:"./assets/img/products/id1.jpg", productColor: "negro", productCost: 13500},
-    { productId: "2", productName: "Campera", productImage:"./assets/img/products/id2.jpg" ,productColor: "negro", productCost: 65000},
-    { productId: "3", productName: "Short", productImage:"./assets/img/products/id3.jpg" ,productColor: "negro", productCost: 20000},
-    { productId: "4", productName: "Gorro", productImage:"./assets/img/products/id4.jpg" ,productColor: "negro", productCost: 7500},
-    { productId: "5", productName: "Pantalón", productImage:"./assets/img/products/id5.jpg" ,productColor: "blanco", productCost: 45000},
-    { productId: "6", productName: "Lentes ", productImage:"./assets/img/products/id6.jpg" ,productColor: "negro", productCost: 10000},
-    { productId: "7", productName: "Buzo", productImage:"./assets/img/products/id7.jpg" ,productColor: "perla", productCost: 33000},
-    { productId: "8", productName: "Jean", productImage:"./assets/img/products/id8.jpg" ,productColor: "azul", productCost: 85000},
-    { productId: "9", productName: "Campera", productImage:"./assets/img/products/id9.jpg" ,productColor: "beige", productCost: 65000},
-    { productId: "10", productName: "Pantuflas", productImage:"./assets/img/products/id10.jpg" ,productColor: "celeste", productCost: 25000},
-    { productId: "11", productName: "Gorro", productImage:"./assets/img/products/id11.jpg" ,productColor: "beige", productCost: 7500},
-    { productId: "12", productName: "Bolsa", productImage:"./assets/img/products/id12.jpg" ,productColor: "beige", productCost: 2500},
+    { productoId: "1", productoNombre: "Remera", productoImagen:"./assets/img/products/id1.jpg", productoColor: "negro", productoCosto: 13500},
+    { productoId: "2", productoNombre: "Campera", productoImagen:"./assets/img/products/id2.jpg" ,productoColor: "negro", productoCosto: 65000},
+    { productoId: "3", productoNombre: "Short", productoImagen:"./assets/img/products/id3.jpg" ,productoColor: "negro", productoCosto: 20000},
+    { productoId: "4", productoNombre: "Gorro", productoImagen:"./assets/img/products/id4.jpg" ,productoColor: "negro", productoCosto: 7500},
+    { productoId: "5", productoNombre: "Pantalón", productoImagen:"./assets/img/products/id5.jpg" ,productoColor: "blanco", productoCosto: 45000},
+    { productoId: "6", productoNombre: "Lentes ", productoImagen:"./assets/img/products/id6.jpg" ,productoColor: "negro", productoCosto: 10000},
+    { productoId: "7", productoNombre: "Buzo", productoImagen:"./assets/img/products/id7.jpg" ,productoColor: "perla", productoCosto: 33000},
+    { productoId: "8", productoNombre: "Jean", productoImagen:"./assets/img/products/id8.jpg" ,productoColor: "azul", productoCosto: 85000},
+    { productoId: "9", productoNombre: "Campera", productoImagen:"./assets/img/products/id9.jpg" ,productoColor: "beige", productoCosto: 65000},
+    { productoId: "10", productoNombre: "Pantuflas", productoImagen:"./assets/img/products/id10.jpg" ,productoColor: "celeste", productoCosto: 25000},
+    { productoId: "11", productoNombre: "Gorro", productoImagen:"./assets/img/products/id11.jpg" ,productoColor: "beige", productoCosto: 7500},
+    { productoId: "12", productoNombre: "Bolsa", productoImagen:"./assets/img/products/id12.jpg" ,productoColor: "beige", productoCosto: 2500},
 ];
 
 // Método para agregar la información a un div del HTML
 productos.forEach((item) => {
-  let productCard = document.createElement("div");
-  productCard.className = "productCard";
-  productCard.innerHTML = `
-    <h2>${item.productName}</h2>
-    <img src= ${item.productImage} class= imgProduct alt= ${item.productName} style="width: auto; height:15rem">
-    <h5>Color: ${item.productColor}</h5>
-    <b>$${item.productCost}</b>
-    <button type="button" class = "btnAddProduct" value = ${item.productId} >Agregar al carrito</button>
+  let productoDeCarrito = document.createElement("div");
+  productoDeCarrito.className = "productoDeCarrito";
+  productoDeCarrito.innerHTML = `
+    <h2>${item.productoNombre}</h2>
+    <img src= ${item.productoImagen} class= imgProduct alt= ${item.productoNombre} style="width: auto; height:15rem">
+    <h5>Color: ${item.productoColor}</h5>
+    <b>$${item.productoCosto}</b>
+    <button type="button" class = "btnAddProduct" value = ${item.productoId} >Agregar al carrito</button>
   `;
-  contenedor.append(productCard);
+  contenedor.append(productoDeCarrito);
 });
 
 // Función que se le asigna al botón "addProduct"
-let botonAddProduct = document.getElementsByClassName("btnAddProduct");
-for (let i = 0; i < botonAddProduct.length; i++) {
-botonAddProduct[i].addEventListener("click", (e) => {
-let productIdintoCart = productos.filter(ele => ele.productId == e.target.value);
-let identifierId = uuid.v1();
-cart.push({...productIdintoCart[0], identifier:identifierId});
-appendCart({...productIdintoCart[0], identifier:identifierId});
-pagoTotal(productIdintoCart[0].productCost);
+let botonAgregarAlCarrito = document.getElementsByClassName("btnAddProduct");
+for (let i = 0; i < botonAgregarAlCarrito.length; i++) {
+  botonAgregarAlCarrito[i].addEventListener("click", (e) => {
+let productoIdEnCarrito = productos.filter(ele => ele.productoId == e.target.value);
+let identificadorId = uuid.v1();
+carritoReceptor.push({...productoIdEnCarrito[0], identifier:identificadorId});
+appendCart({...productoIdEnCarrito[0], identifier:identificadorId});
+pagoTotal(productoIdEnCarrito[0].productoCosto);
 
 // Actualización localStorage
-localStorage.setItem("carrito", JSON.stringify(cart));
+localStorage.setItem("carrito", JSON.stringify(carritoReceptor));
 })}
 
 // Declaración e inicialización de variable que brindará el total
@@ -62,20 +62,20 @@ let total=0;
 // Función para agregar items al carrito
 const appendCart = (item) => {
 // Contenedor de carrito
-  let contenedorCart = document.getElementById("contenedor-carrito");
-  let productIdintoCartMini = document.createElement("div");
-  productIdintoCartMini.className = "productIdintoCartMini";
-  productIdintoCartMini.id = item.identifier;
-  productIdintoCartMini.innerHTML = `
+  let contenedorCarrito = document.getElementById("contenedor-carrito");
+  let productoIdEnCarritoMini = document.createElement("div");
+  productoIdEnCarritoMini.className = "productoIdEnCarritoMini";
+  productoIdEnCarritoMini.id = item.identifier;
+  productoIdEnCarritoMini.innerHTML = `
   <div class="card " style="max-width: 100%;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src=${item.productImage} class="img-fluid rounded-start imgProduct" alt=${item.productName} >
+      <img src=${item.productoImagen} class="img-fluid rounded-start imgProduct" alt=${item.productoNombre} >
     </div>
     <div class="col-md-7">
       <div class="card-body">
-        <h5 class="card-title">${item.productName}</h5>
-        <p class="card-text">$${item.productCost}.00</p>
+        <h5 class="card-title">${item.productoNombre}</h5>
+        <p class="card-text">$${item.productoCosto}.00</p>
         <div id=${item.identifier}></div>
       </div>
     </div>
@@ -83,48 +83,48 @@ const appendCart = (item) => {
 </div>
 `
 // Contenedor visual
-  contenedorCart.append(productIdintoCartMini);
-  let button = document.createElement("button");
-  button.id = "myButtonDelete";
-  button.className = "myButtonDeleteClass";
-  button.textContent = "Borrar";
-  button.addEventListener("click", () => {
-    let deleteItem = cart.filter(ele => ele.identifier !== item.identifier);
-  cart = deleteItem;
+  contenedorCarrito.append(productoIdEnCarritoMini);
+  let botonBorrar = document.createElement("button");
+  botonBorrar.id = "myButtonDelete";
+  botonBorrar.className = "myButtonDeleteClass";
+  botonBorrar.textContent = "Borrar";
+  botonBorrar.addEventListener("click", () => {
+    let borrarItem = carritoReceptor.filter(ele => ele.identifier !== item.identifier);
+    carritoReceptor = borrarItem;
 
 // Actualiza localStorage
-localStorage.setItem("carrito", JSON.stringify(cart));
+localStorage.setItem("carrito", JSON.stringify(carritoReceptor));
 
   let getProduct = document.getElementById(item.identifier);
   getProduct.remove();
-  pagoTotal(item.productCost*-1);
+  pagoTotal(item.productoCosto*-1);
   })
-  let contenedorButtonDelete = document.getElementById(`${item.identifier}`);
-  contenedorButtonDelete.appendChild(button);
+  let contenedorBotonBorrar = document.getElementById(`${item.identifier}`);
+  contenedorBotonBorrar.appendChild(botonBorrar);
 }
 
 window.addEventListener("load", () => {
-  if(cart.length > 0){
-    cart.forEach((item) => {
+  if(carritoReceptor.length > 0){
+    carritoReceptor.forEach((item) => {
     appendCart(item);
-    pagoTotal(item.productCost);
+    pagoTotal(item.productoCosto);
     })}
 })
 
 // Llamado a función que oculatará el botón hasta que se agreguen productos
-hideBtnFinalizar();
+ocultarBtnFinalizar();
 
 // Función para cálculo total
 function pagoTotal(precio){
    
     total = total + precio;
-    let totalContent = document.getElementById("total");
-    totalContent.textContent = `Cantidad: ${cart.length} - Total a pagar: $${total}`;
+    let totalAgregado = document.getElementById("total");
+    totalAgregado.textContent = `Cantidad: ${carritoReceptor.length} - Total a pagar: $${total}`;
     // Condición para mostrar el botón finalizar solo si hay productos en el carrito
-    if(cart.length > 0){
-      showBtnFinalizar();
+    if(carritoReceptor.length > 0){
+      mostrarBtnFinalizar();
     } else {
-      hideBtnFinalizar();
+      ocultarBtnFinalizar();
     }
   }
   
@@ -143,11 +143,7 @@ function pagoTotal(precio){
       confirmButtonText: 'Finalizar',
       denyButtonText: `Regresar`,
     }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.reload();
-      } else if (result.isDenied) {
-      // Se deja sin acciones para que regrese a la ventana para continuar con la compra
-      }
+      result.isConfirmed ? window.location.reload() : result.isDenied;
     })
 // Eliminación de localStorage al finalizar la compra
     localStorage.clear();
@@ -155,25 +151,21 @@ function pagoTotal(precio){
 
 // Validación para carga de localStorage de usuario o solicitar el ingreso
 let usuario = localStorage.getItem("usuario");
-if (usuario) {
-  mostrarUsuario(usuario);
-}
+usuario && mostrarUsuario(usuario)
 
 // Función para solicitar el inicio de la sesión
 function mostrarUsuario(usuario) {
-  let userInfo = document.getElementById("userInfo");
-  userInfo.textContent = `¡Qué gusto verte nuevamente, ${usuario}!`;
+  let infoUsuario = document.getElementById("infoUsuario");
+  infoUsuario.textContent = `¡Qué gusto verte nuevamente, ${usuario}!`;
 
   // Condición para mostrar el botón login o no en función a la existencia de usuario en el localStorage
-  if (localStorage.getItem("usuario") !== null){
-    hideBtnLogin();
-  }else {
-    showBtnLogin();
-  }}
+  (localStorage.getItem("usuario") !== null) ? ocultarbtnInicioSesion() : mostrarbtnInicioSesion();
+  }
+
 
 // Botón de inicio de sesión
-let btnLogin = document.getElementById("btnLogin");
-btnLogin.addEventListener("click", () => {
+let btnInicioSesion = document.getElementById("btnInicioSesion");
+btnInicioSesion.addEventListener("click", () => {
   Swal.fire({
     title: 'Inicie sesión',
     input: 'text',
@@ -191,26 +183,26 @@ btnLogin.addEventListener("click", () => {
         mostrarUsuario(usuario);
 
 // Valida la aparación del botón en función al localStorage
-        btnLogin.style.display = 'none';
+        btnInicioSesion.style.display = 'none';
       }
     }
   });
 });
 
 // Funciones para mostrar u ocultar el botón "Finalizar compra"
-function hideBtnFinalizar(){
+function ocultarBtnFinalizar(){
   document.getElementById("btnFinalizar").style.display = `none`;
 }
 
-function showBtnFinalizar(){
+function mostrarBtnFinalizar(){
   document.getElementById("btnFinalizar").style.display = "block";
 }
 
 // Funciones para mostrar u ocultar el botón "Login/Iniciar Sesión"
-function hideBtnLogin(){
-  document.getElementById("btnLogin").style.display = `none`;
+function ocultarbtnInicioSesion(){
+  document.getElementById("btnInicioSesion").style.display = `none`;
 }
 
-function showBtnLogin(){
-  document.getElementById("btnLogin").style.display = "block";
+function mostrarbtnInicioSesion(){
+  document.getElementById("btnInicioSesion").style.display = "block";
 }
