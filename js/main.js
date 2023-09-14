@@ -12,7 +12,7 @@ let contenedor = document.getElementById("contenedor-productos");
 
 const traerProductos = async () => {
   try {
-    const response = await fetch("../products.json");
+    const response = await fetch("./products.json");
     const catalogo = await response.json();
 
     catalogo.forEach((item) => {
