@@ -2,7 +2,7 @@
     { 
         "productoId": "1", 
         "productoNombre": "Remera", 
-        "productoImagen":"/assets/img/products/id1.jpg", 
+        "productoImagen":"./assets/img/products/id1.jpg", 
         "productoColor": "negro", 
         "productoCosto": 13500
     },
