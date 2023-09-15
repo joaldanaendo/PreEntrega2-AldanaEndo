@@ -1,5 +1,17 @@
 @charset "UTF-8";
 
+/* Estilo para pantallas pequeñas */
+@media (max-width: 768px) {
+
+    .productoDeCatalogo,
+    .productoIdEnCarritoMini {
+        max-width: 100%;
+        /* Otra forma de hacerlo responsive */
+        margin: 10px;
+    }
+}
+
+
 /* ******************************************* */
 /* *Estilos generales */
 /* ******************************************* */
@@ -24,6 +36,15 @@
 
 body {
     background: url(../assets/img/background/wall_op05_2.jpg);
+    font-size: medium;
+}
+
+h3 {
+    padding-top: 10px;
+}
+
+h5 {
+    font-size: medium;
 }
 
 /* ******************************************* */
@@ -37,11 +58,12 @@ body {
 .container__usuario {
     background-color: var(--rosa-basic-color);
     margin-top: 5px;
+    padding: 5px;
 }
 
 #infoUsuario {
     display: flex;
-    font-size: large;
+    font-size: medium;
     font-weight: bold;
 }
 
@@ -64,8 +86,10 @@ body {
     background-color: rgba(212, 170, 170, 0.383);
     border: 2px dotted #2B3035;
     border-radius: 5%;
-    margin: 10px;
     padding: 10px;
+    max-width: 300px;
+    /* Cambia este valor según tus preferencias */
+    margin: 10px;
 }
 
 .imgProduct {
@@ -124,7 +148,7 @@ body {
 footer h4,
 footer h5 {
     margin-bottom: 10px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--white-basic-color);
 }
 
@@ -135,4 +159,21 @@ button {
     color: var(--white-basic-color);
     font-weight: 400;
     margin-left: 5px;
+}
+
+
+#contenedor-productos,
+#contenedor-productos-mini {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Alinea los elementos a la izquierda */
+}
+
+#contenedor-carrito,
+#contenedor-carrito-mini {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Alinea los elementos a la izquierda */
 }
